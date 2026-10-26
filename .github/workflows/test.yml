@@ -1,0 +1,16 @@
+name: Version info
+
+on:
+  push:
+
+  workflow_dispatch:
+
+jobs:
+  add_version_info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add version information
+        run: python3 test.py
