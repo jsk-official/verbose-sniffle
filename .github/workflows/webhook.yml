@@ -1,0 +1,19 @@
+name: Webhook
+
+on:
+  push:
+
+  workflow_dispatch:
+
+jobs:
+  webhookFire:
+    env:
+      COMMITS_CHANNEL_WEBHOOK: ${{ secrets.COMMITS_CHANNEL_WEBHOOK }}
+  
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fire a webhook
+        run: python3 scripts/commit_message_webhook.py
